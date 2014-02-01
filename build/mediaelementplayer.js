@@ -2529,10 +2529,11 @@ if (typeof jQuery != 'undefined') {
 				});
 			} else {
 				// hover
+				var captionSelector = $(player.captionsButton).find('.mejs-captions-selector');
 				player.captionsButton.hover(function() {
-					$(this).find('.mejs-captions-selector').css('visibility','visible');
+					captionSelector.css('visibility','visible');
 				}, function() {
-					$(this).find('.mejs-captions-selector').css('visibility','hidden');
+					captionSelector.css('visibility','hidden');
 				})
 
 				// handle clicks to the language radio buttons
@@ -2541,6 +2542,15 @@ if (typeof jQuery != 'undefined') {
 					player.setTrack(lang);
 				});
 
+				$(player.captionsButton).find('button').focus(function() {
+					captionSelector.css('visibility','visible');
+					captionSelector.find( 'input').focus();
+					captionSelector.focusout( function( e ) {
+						if(e.relatedTarget && !$(e.relatedTarget).parents('.mejs-captions-selector').length ) {
+							captionSelector.css('visibility', 'hidden');
+						}
+					});
+				});
 			}
 
 			if (!player.options.alwaysShowControls) {
