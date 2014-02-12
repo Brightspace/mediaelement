@@ -171,9 +171,9 @@
 					}
 				});
 
-            var updateVolumeSlider = function (e) {
+			var updateVolumeSlider = function (e) {
 
-                var volume = Math.floor(media.volume*100);
+			var volume = Math.floor(media.volume*100);
 
 				volumeSlider.attr({
 					'aria-label': mejs.i18n.t('volumeSlider'),
@@ -186,7 +186,7 @@
 				});
 
 			};
-            
+
 			volumeSlider
 				.bind('mouseover', function () {
 					mouseIsOver = true;
@@ -212,15 +212,15 @@
 					var keyCode = e.keyCode;
 					var volume = media.volume;
 					switch (keyCode) {
-                        case 38: // Up
-                            volume += 0.1;
-                            break;
-                        case 40: // Down
-                            volume = volume - 0.1;
-                            break;
-                        default:
-                            return true;
-                    };
+						case 38: // Up
+							volume += 0.1;
+							break;
+						case 40: // Down
+							volume = volume - 0.1;
+							break;
+						default:
+							return true;
+					};
 
 					mouseIsDown = false;
 					positionVolumeHandle(volume);
@@ -253,9 +253,9 @@
 						mute.removeClass('mejs-unmute').addClass('mejs-mute');
 					}
 				}
-                
+
                 updateVolumeSlider(e);
-                
+
 			}, false);
 
 			if (t.container.is(':visible')) {

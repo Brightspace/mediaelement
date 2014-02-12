@@ -186,7 +186,7 @@
 
 		// extend default options
 		t.options = $.extend({}, mejs.MepDefaults, o);
-       
+
 		// unique ID
 		var id = 'mep_' + mejs.mepIndex++;
 		while (document.getElementById(id)) {
@@ -259,11 +259,11 @@
 				// DESKTOP: use MediaElementPlayer controls
 
 				// remove native controls
-				t.$media.removeAttr('controls');                
+				t.$media.removeAttr('controls');
 				// build container
 				t.container =
 					$('<span class="mejs-offscreen">'+ mejs.i18n.t('videoPlayerTitle')+'</span>'+
-                      '<div id="' + t.id + '" class="mejs-container ' + (mejs.MediaFeatures.svg ? 'svg' : 'no-svg') +
+						'<div id="' + t.id + '" class="mejs-container ' + (mejs.MediaFeatures.svg ? 'svg' : 'no-svg') +
 						'" tabindex="0" role="application" aria-label="Video Player">' +
 						'<div class="mejs-inner">' +
 						'<div class="mejs-mediaelement"></div>' +
@@ -382,7 +382,7 @@
 					});
 
 				// any additional controls people might add and want to hide
-				t.container.find('.mejs-control')
+				t.container.find('.mejs-controls')
 					.css('visibility', 'visible')
 					.stop(true, true).fadeIn(200, function () {
 						t.controlsAreVisible = true;
@@ -394,7 +394,7 @@
 					.css('display', 'block');
 
 				// any additional controls people might add and want to hide
-				t.container.find('.mejs-control')
+				t.container.find('.mejs-controls')
 					.css('visibility', 'visible')
 					.css('display', 'block');
 
@@ -427,7 +427,7 @@
 				});
 
 				// any additional controls people might add and want to hide
-				t.container.find('.mejs-control').stop(true, true).fadeOut(200, function () {
+				t.container.find('.mejs-controls').stop(true, true).fadeOut(200, function () {
 					$(this)
 						.css('visibility', 'hidden')
 						.css('display', 'block');
@@ -440,7 +440,7 @@
 					.css('display', 'block');
 
 				// hide others
-				t.container.find('.mejs-control')
+				t.container.find('.mejs-controls')
 					.css('visibility', 'hidden')
 					.css('display', 'block');
 

@@ -10,13 +10,16 @@
 	// current and duration 00:00 / 00:00
 	$.extend(MediaElementPlayer.prototype, {
 		buildcurrent: function(player, controls, layers, media) {
-			var t = this;
+			var t = this,
+				timeLabel = mejs.i18n.t('timeLabel');
 
-			$('<div class="mejs-time">'+
-					'<span class="mejs-currenttime">' + (player.options.alwaysShowHours ? '00:' : '') +
-					(player.options.showTimecodeFrameCount? '00:00:00':'00:00')+ '</span>'+
-					'</div>')
-					.appendTo(controls);
+			$('<div class="mejs-time" role="timer">' +
+					'<span class="mejs-currenttime" >' +
+					(player.options.alwaysShowHours ? '00:' : '') +
+					(player.options.showTimecodeFrameCount? '00:00:00':'00:00') +
+					'</span>'+
+					'</div>'
+			 ).appendTo(controls);
 
 			t.currenttime = t.controls.find('.mejs-currenttime');
 
@@ -31,10 +34,14 @@
 
 			if (controls.children().last().find('.mejs-currenttime').length > 0) {
 				$(t.options.timeAndDurationSeparator +
-					'<span class="mejs-duration">' +
+					'<span class="mejs-duration" >' +
 						(t.options.duration > 0 ?
-							mejs.Utility.secondsToTimeCode(t.options.duration, t.options.alwaysShowHours || t.media.duration > 3600, t.options.showTimecodeFrameCount,  t.options.framesPerSecond || 25) :
-							((player.options.alwaysShowHours ? '00:' : '') + (player.options.showTimecodeFrameCount? '00:00:00':'00:00'))
+							mejs.Utility.secondsToTimeCode(
+								t.options.duration,
+								t.options.alwaysShowHours || t.media.duration > 3600,
+								t.options.showTimecodeFrameCount,
+								t.options.framesPerSecond || 25
+							) : ( (player.options.alwaysShowHours ? '00:' : '') + (player.options.showTimecodeFrameCount? '00:00:00':'00:00') )
 						) +
 					'</span>')
 					.appendTo(controls.find('.mejs-time'));
@@ -44,10 +51,13 @@
 				controls.find('.mejs-currenttime').parent().addClass('mejs-currenttime-container');
 
 				$('<div class="mejs-time mejs-duration-container">'+
-					'<span class="mejs-duration">' +
+					'<span class="mejs-duration" >' +
 						(t.options.duration > 0 ?
-							mejs.Utility.secondsToTimeCode(t.options.duration, t.options.alwaysShowHours || t.media.duration > 3600, t.options.showTimecodeFrameCount,  t.options.framesPerSecond || 25) :
-							((player.options.alwaysShowHours ? '00:' : '') + (player.options.showTimecodeFrameCount? '00:00:00':'00:00'))
+							mejs.Utility.secondsToTimeCode(
+								t.options.duration,
+								t.options.alwaysShowHours || t.media.duration > 3600,
+								t.options.showTimecodeFrameCount,  t.options.framesPerSecond || 25
+							) :	( (player.options.alwaysShowHours ? '00:' : '') + (player.options.showTimecodeFrameCount? '00:00:00':'00:00') )
 						) +
 					'</span>' +
 				'</div>')
@@ -65,7 +75,10 @@
 			var t = this;
 
 			if (t.currenttime) {
-				t.currenttime.html(mejs.Utility.secondsToTimeCode(t.media.currentTime, t.options.alwaysShowHours || t.media.duration > 3600, t.options.showTimecodeFrameCount,  t.options.framesPerSecond || 25));
+				t.currenttime.html(mejs.Utility.secondsToTimeCode(
+						t.media.currentTime, t.options.alwaysShowHours || t.media.duration > 3600, t.options.showTimecodeFrameCount,
+						t.options.framesPerSecond || 25
+				) );
 			}
 		},
 
@@ -76,7 +89,10 @@
 			t.container.toggleClass("mejs-long-video", t.media.duration > 3600);
 
 			if (t.durationD && (t.options.duration > 0 || t.media.duration)) {
-				t.durationD.html(mejs.Utility.secondsToTimeCode(t.options.duration > 0 ? t.options.duration : t.media.duration, t.options.alwaysShowHours, t.options.showTimecodeFrameCount, t.options.framesPerSecond || 25));
+				t.durationD.html( mejs.Utility.secondsToTimeCode(
+						t.options.duration > 0 ? t.options.duration : t.media.duration,
+						t.options.alwaysShowHours, t.options.showTimecodeFrameCount, t.options.framesPerSecond || 25
+				) );
 			}
 		}
 	});
