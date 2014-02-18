@@ -2237,14 +2237,7 @@ if (typeof jQuery != 'undefined') {
 						'</div>' +
 						'</div>')
 					.addClass(t.$media[0].className)
-					.insertBefore(t.$media)
-					.focus(function ( e ) {
-						if( !t.controlsAreVisible ) {
-							t.showControls(true);
-							var playButton = t.container.find('.mejs-playpause-button > button');
-							playButton.focus();
-						}
-					});
+					.insertBefore(t.$media);
 
 				// add classes for user and content
 				t.container.addClass(
@@ -2333,7 +2326,9 @@ if (typeof jQuery != 'undefined') {
 
 			doAnimation = typeof doAnimation == 'undefined' || doAnimation;
 
-			if (t.controlsAreVisible) {
+			var $controls = t.container.find('.mejs-controls');
+
+			if ( t.controlsAreVisible && $controls.css('visibility') === 'visible' ) {
 				return;
 			}
 
@@ -2346,7 +2341,7 @@ if (typeof jQuery != 'undefined') {
 					});
 
 				// any additional controls people might add and want to hide
-				t.container.find('.mejs-controls')
+				$controls
 					.css('visibility', 'visible')
 					.stop(true, true).fadeIn(200, function () {
 						t.controlsAreVisible = true;
@@ -2358,7 +2353,7 @@ if (typeof jQuery != 'undefined') {
 					.css('display', 'block');
 
 				// any additional controls people might add and want to hide
-				t.container.find('.mejs-controls')
+				$controls
 					.css('visibility', 'visible')
 					.css('display', 'block');
 
@@ -2424,7 +2419,6 @@ if (typeof jQuery != 'undefined') {
 			t.killControlsTimer('start');
 
 			t.controlsTimer = setTimeout(function () {
-				//
 				t.hideControls();
 				t.killControlsTimer('hide');
 			}, timeout);
@@ -2539,8 +2533,6 @@ if (typeof jQuery != 'undefined') {
 						// create callback here since it needs access to current
 						// MediaElement object
 						mejs.MediaElementPlayer.prototype.clickToPlayPauseCallback = function () {
-							//
-
 							if (t.options.clickToPlayPause) {
 								if (t.media.paused) {
 									t.play();
@@ -2579,6 +2571,15 @@ if (typeof jQuery != 'undefined') {
 								if (t.controlsEnabled) {
 									if (!t.media.paused && !t.options.alwaysShowControls) {
 										t.startControlsTimer(1000);
+									}
+								}
+							})
+							.bind('focus', function () {
+								if (t.controlsEnabled) {
+									if( !t.controlsAreVisible ) {
+										t.showControls(true);
+										var playButton = t.container.find('.mejs-playpause-button > button');
+										playButton.focus();
 									}
 								}
 							});
