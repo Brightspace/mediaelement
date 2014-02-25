@@ -13,7 +13,7 @@
 			var t = this,
 				timeLabel = mejs.i18n.t('timeLabel');
 
-			$('<div class="mejs-time" role="timer">' +
+			$('<div class="mejs-time" role="timer" aria-live="off">' +
 					'<span class="mejs-currenttime" >' +
 					(player.options.alwaysShowHours ? '00:' : '') +
 					(player.options.showTimecodeFrameCount? '00:00:00':'00:00') +
