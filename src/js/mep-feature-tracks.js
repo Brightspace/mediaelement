@@ -38,7 +38,7 @@
 					$('<div class="mejs-chapters mejs-layer"></div>')
 						.prependTo(layers).hide();
 			player.captions =
-					$('<div class="mejs-captions-layer mejs-layer"><div class="mejs-captions-position mejs-captions-position-hover"><span class="mejs-captions-text"></span></div></div>')
+					$('<div class="mejs-captions-layer mejs-layer"><div class="mejs-captions-position mejs-captions-position-hover" role="log" aria-live="rude" aria-atomic="false" ><span class="mejs-captions-text"></span></div></div>')
 						.prependTo(layers).hide();
 			player.captionsText = player.captions.find('.mejs-captions-text');
 			player.captionsButton =
@@ -343,10 +343,19 @@
 				track = t.selectedTrack;
 
 			if (track !== null && track.isLoaded) {
+
 				for (i=0; i<track.entries.times.length; i++) {
-					if (t.media.currentTime >= track.entries.times[i].start && t.media.currentTime <= track.entries.times[i].stop){
+					if (t.media.currentTime >= track.entries.times[i].start &&
+						t.media.currentTime <= track.entries.times[i].stop ) {
+
+						if(t.captionsText.html() === track.entries.text[i]) {
+							return;
+						}
+
 						t.captionsText.html(track.entries.text[i]);
-						t.captions.show().height(0);
+						if( !t.captions.is(':visible') ) {
+							t.captions.show().height(0);
+						}
 						return; // exit out if one is visible;
 					}
 				}
