@@ -7,7 +7,7 @@
   "_resolution": {
     "type": "branch",
     "branch": "accessibility",
-    "commit": "da2c30d6804058e67a9e2ef6ba50a93e88fb98e6"
+    "commit": "0e66f0fbf8b9dd7e7213068c4edc96eeb653a588"
   },
   "_source": "https://github.com/rylan/mediaelement.git",
   "_target": "accessibility",
