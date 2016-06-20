@@ -2,16 +2,16 @@
   "name": "mediaelement",
   "main":["./build/mediaelement-and-player.min.js"],
   "ignore": ["demo", "media", "src", "test"],
-  "homepage": "https://github.com/rylan/mediaelement",
+  "homepage": "https://github.com/klhuff/mediaelement",
   "_release": "da2c30d680",
   "_resolution": {
     "type": "branch",
     "branch": "accessibility",
-    "commit": "0e66f0fbf8b9dd7e7213068c4edc96eeb653a588"
+    "commit": "1e1b9b86da919d100a275713ff8107ef688a1269"
   },
-  "_source": "https://github.com/rylan/mediaelement.git",
+  "_source": "https://github.com/klhuff/mediaelement.git",
   "_target": "accessibility",
-  "_originalSource": "https://github.com/rylan/mediaelement.git",
+  "_originalSource": "https://github.com/klhuff/mediaelement.git",
   "dependencies": {
     "jquery": ">=1.8"
   }
