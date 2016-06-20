@@ -262,7 +262,7 @@
 				t.$media.removeAttr('controls');
 				
 				// insert description for screen readers
-				$('<span class="mejs-offscreen">' + videoPlayerTitle + '</span>').insertBefore(t.$media);
+				$('<span class="mejs-offscreen">' + mejs.i18n.t('videoPlayerTitle') + '</span>').insertBefore(t.$media);
 				
 				// build container
 				t.container =
