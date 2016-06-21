@@ -260,10 +260,13 @@
 
 				// remove native controls
 				t.$media.removeAttr('controls');
+				
+				// insert description for screen readers
+				$('<span class="mejs-offscreen">' + mejs.i18n.t('videoPlayerTitle') + '</span>').insertBefore(t.$media);
+				
 				// build container
 				t.container =
-					$('<span class="mejs-offscreen">'+ mejs.i18n.t('videoPlayerTitle')+'</span>'+
-						'<div id="' + t.id + '" class="mejs-container ' + (mejs.MediaFeatures.svg ? 'svg' : 'no-svg') +
+					$('<div id="' + t.id + '" class="mejs-container ' + (mejs.MediaFeatures.svg ? 'svg' : 'no-svg') +
 						'" tabindex="0" role="application" aria-label="Video Player">' +
 						'<div class="mejs-inner">' +
 						'<div class="mejs-mediaelement"></div>' +
