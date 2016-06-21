@@ -2,16 +2,16 @@
   "name": "mediaelement",
   "main":["./build/mediaelement-and-player.min.js"],
   "ignore": ["demo", "media", "src", "test"],
-  "homepage": "https://github.com/klhuff/mediaelement",
+  "homepage": "https://github.com/Brightspace/mediaelement",
   "_release": "da2c30d680",
   "_resolution": {
     "type": "branch",
     "branch": "accessibility",
-    "commit": "1e1b9b86da919d100a275713ff8107ef688a1269"
+    "commit": "0b257c0ae3ff03142e78f8cfdf6200b65043147c"
   },
-  "_source": "https://github.com/klhuff/mediaelement.git",
+  "_source": "https://github.com/Brightspace/mediaelement.git",
   "_target": "accessibility",
-  "_originalSource": "https://github.com/klhuff/mediaelement.git",
+  "_originalSource": "https://github.com/Brightspace/mediaelement.git",
   "dependencies": {
     "jquery": ">=1.8"
   }
